@@ -1,15 +1,4 @@
-import { TForecast, IApiResponse } from "./types";
-
-type TParsedForecast = {
-  dayName: string,
-  tempCurrent: number,
-  tempMin: number,
-  tempMax: number,
-  weather: string,
-  icon: string,
-  city: string,
-  time: string,
-};
+import { TForecast, IApiResponse, TParsedForecast } from "./types";
 
 // Converts temperature in Kelvin to Celsius
 const kelvinToCelsius = (k: number): number => Math.floor(k - 273.15);
@@ -33,6 +22,6 @@ export const dataParser = (forecastData: IApiResponse): TParsedForecast[] => {
       city: city.name,
     }
   });
-  console.log(parsedForecast);
+
   return parsedForecast;
 };

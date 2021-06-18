@@ -1,8 +1,9 @@
 import { useCallback } from "react";
 import APIService from "../api/APIService";
+import { IApiResponse } from "../types";
 
-const useForecast = (updateState: (state: any) => void) => {
-  const fetchForecasts = useCallback(async (): Promise<any> => {
+const useForecast = (updateState: (state: IApiResponse) => void) => {
+  const fetchForecasts = useCallback(async (): Promise<void> => {
     const result = await APIService.fetchData();
     updateState(result);
   },[updateState]);

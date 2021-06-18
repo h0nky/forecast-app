@@ -1,3 +1,9 @@
+export interface IAppState {
+  forecasts: TParsedForecast[];
+  loading: boolean;
+  error: boolean;
+}
+
 type TCity = {
   coord: {
     lat: number;
@@ -52,3 +58,20 @@ export interface IApiResponse {
 export interface IApiService {
   fetchData: () => void;
 }
+
+export type TParsedForecast = {
+  dayName: string,
+  tempCurrent: number,
+  tempMin: number,
+  tempMax: number,
+  weather: string,
+  icon: string,
+  city: string,
+  time: string,
+};
+
+export interface IForecastListItemProps {
+  time: string;
+  iconId: string;
+  temperature: number;
+};
