@@ -8,7 +8,11 @@ const MainPage: FC<{ state: any, updateState: () => void }> = ({ state, updateSt
     fetchForecasts();
   },[]);
   return (
-    <div />
+    <main>
+      <section>
+        
+      </section>
+    </main>
   );
 }
 

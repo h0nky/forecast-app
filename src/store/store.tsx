@@ -1,9 +1,10 @@
 import { createContext, ReactElement, FC, useState } from "react";
+import { dataParser } from "../utils";
 
 const Context = createContext({});
 
 const initialState = {};
-
+// TODO: handle errors and loading!
 const Provider: FC<{ children: ReactElement }> = ({ children }): ReactElement => {
   const [state, setState] = useState(initialState);
   return (
@@ -11,7 +12,8 @@ const Provider: FC<{ children: ReactElement }> = ({ children }): ReactElement =>
       value={{
         state,
         updateState: (data: any) => {
-          setState(data);
+          const parsedData = dataParser(data);
+          setState(parsedData);
         }
       }}
     >
