@@ -2,6 +2,7 @@ export interface IAppState {
   forecasts: TParsedForecast[];
   loading: boolean;
   error: boolean;
+  activePeriod: any;
 }
 
 type TCity = {
@@ -68,10 +69,15 @@ export type TParsedForecast = {
   icon: string,
   city: string,
   time: string,
+  id: string;
+  dayNumeric: string;
+  month: string;
 };
 
 export interface IForecastListItemProps {
   time: string;
   iconId: string;
   temperature: number;
+  id: string;
+  onHandleClick: (id: string) => void;
 };

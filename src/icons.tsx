@@ -1,7 +1,7 @@
-export const SunIcon = () => (
-  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-    viewBox="0 0 24 24" xmlSpace="preserve">
-  <title>weather-sun</title>
+import { FC } from "react";
+
+export const SunIcon: FC<{ width: string }> = ({ width }) => (
+  <svg fill="#FFC700" width={width} version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" xmlSpace="preserve">
     <path d="M12,19.5c-4.135,0-7.5-3.365-7.5-7.5S7.865,4.5,12,4.5s7.5,3.365,7.5,7.5S16.135,19.5,12,19.5z M12,6c-3.308,0-6,2.692-6,6
       s2.692,6,6,6s6-2.692,6-6S15.308,6,12,6z"/>
     <path d="M12,3c-0.414,0-0.75-0.336-0.75-0.75v-1.5C11.25,0.336,11.586,0,12,0s0.75,0.336,0.75,0.75v1.5C12.75,2.664,12.414,3,12,3z
@@ -27,17 +27,9 @@ export const SunIcon = () => (
   </svg>
 );
 
-export const CloudIcon = () => (
-  <svg
-    fill="none"
-    height="24"
-    viewBox="0 0 24 24"
-    width="24"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
-  >
-    <clipPath id="a"><path d="m0 0h24v24h-24z" /></clipPath>
-    <g clip-path="url(#a)">
+export const CloudIcon: FC<{ width: string }> = ({ width }) => (
+  <svg width={width} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+    <g clipPath="url(#a)">
       <path
         d="m9.75 21.75c-.674 0-1.346-.153-1.949-.442-2.235-1.072-3.182-3.761-2.11-5.997.743-1.55 2.337-2.552 4.059-2.552.37 0 .736.045 1.093.136.902-2.754 3.486-4.646 6.414-4.646 1.811.002 3.505.706 4.779 1.983 1.273 1.277 1.974 2.972 1.971 4.775-.004 3.718-3.032 6.742-6.75 6.742zm7.518-1.5c2.88 0 5.236-2.353 5.239-5.244.002-1.402-.543-2.721-1.533-3.714s-2.308-1.54-3.711-1.542c-2.524 0-4.693 1.795-5.164 4.268 0 0-.003.016-.005.022-.061.305-.094.634-.095.961 0 .214.014.433.04.647.005.04.007.071.007.102 0 .377-.282.697-.656.744-.032.004-.063.006-.094.006-.377 0-.696-.282-.744-.656-.034-.279-.052-.563-.052-.844.001-.211.012-.422.033-.631-.259-.072-.521-.109-.783-.109-1.149 0-2.211.667-2.706 1.7-.714 1.489-.083 3.281 1.406 3.996.381.183.833.284 1.308.294h7.495z"
         fill="#999"

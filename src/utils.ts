@@ -8,8 +8,9 @@ const parseDate = (date: string, options: {[key:string]: string|boolean}): strin
 
 export const dataParser = (forecastData: IApiResponse): TParsedForecast[] => {
   const { city, list } = forecastData;
-  const parsedForecast = list?.map((item: TForecast) => {
+  const parsedForecast = list?.map((item: TForecast, index: number) => {
     return {
+      id: String(index),
       dayName: parseDate(item.dt_txt, {weekday: 'long'}),
       month: parseDate(item.dt_txt, {month: 'long'}),
       dayNumeric: parseDate(item.dt_txt, {day: 'numeric'}),
@@ -24,4 +25,8 @@ export const dataParser = (forecastData: IApiResponse): TParsedForecast[] => {
   });
 
   return parsedForecast;
+};
+
+export const getActivePeriod = (id: string, forecasts: TParsedForecast[]): TParsedForecast => {
+  return forecasts.filter(forecast => forecast.id === id)[0];
 };

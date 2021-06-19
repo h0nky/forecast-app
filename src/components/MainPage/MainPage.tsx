@@ -1,10 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { ReactElement, FC, useEffect } from "react";
+import ForecastDetails from "../ForecastDetails";
 import ForecastList from "../ForecastList";
 import { IAppState } from "../../types";
 import useForecast from "../../hooks/useForecast";
 
-const MainPage: FC<{ state: IAppState, updateState: () => void }> = ({ state, updateState }): ReactElement => {
+const MainPage: FC<{
+  state: IAppState,
+  updateState: () => void,
+  switchPeriod: (id: string) => void
+}> = ({
+  state,
+  updateState,
+  switchPeriod 
+}): ReactElement => {
   const fetchForecasts = useForecast(updateState);
 
   useEffect(() => {
@@ -14,7 +23,11 @@ const MainPage: FC<{ state: IAppState, updateState: () => void }> = ({ state, up
   return (
     <main>
       <section>
-        <ForecastList forecasts={state.forecasts} />
+        <ForecastDetails {...state.activePeriod} />
+        <ForecastList
+          forecasts={state.forecasts}
+          handleClick={switchPeriod}
+        />
       </section>
     </main>
   );
