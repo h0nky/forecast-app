@@ -1,12 +1,6 @@
 import { FC, ReactElement, useRef } from "react";
 import { IForecastListItemProps } from "../../types";
-import { SunIcon, CloudIcon } from "../../icons";
 import "./index.scss";
-
-const icons: { [key: string]: JSX.Element } = {
-  '01d': <SunIcon width="120px" />,
-  '01n': <CloudIcon width="120px" />
-};
 
 const ForecastListItem: FC<IForecastListItemProps> = ({ time, iconId, temperature, id, onHandleClick }): ReactElement => {
   const ref = useRef<any>(null); // TODO: fix any
@@ -15,7 +9,9 @@ const ForecastListItem: FC<IForecastListItemProps> = ({ time, iconId, temperatur
       <span className="forecast-list-item__time">
         {time}
       </span>
-        {icons[iconId]}
+      <span className="forecast-list-item__icon-wrapper">
+        {iconId}
+      </span>
       <span className="forecast-list-item__temperature">
         {temperature}
       </span>

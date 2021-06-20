@@ -10,3 +10,20 @@ $font-size-s: 47.78px;
 $font-size-m: 82.556px;
 $font-size-l: 99.068px;
 $font-size-xl: 246.512px;
+
+// MIXINS
+@mixin typography-primary {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0px;
+  color: $white;
+}
+
+@mixin typography-secondary {
+  font-family: Roboto;
+  font-size: $font-size-s;
+  font-style: normal;
+  font-weight: 400;
+  color: $indigo;
+}

@@ -62,11 +62,11 @@ export interface IApiService {
 
 export type TParsedForecast = {
   dayName: string,
-  tempCurrent: number,
-  tempMin: number,
-  tempMax: number,
+  tempCurrent: string,
+  tempMin: string,
+  tempMax: string,
   weather: string,
-  icon: string,
+  icon: JSX.Element,
   city: string,
   time: string,
   id: string;
@@ -76,8 +76,8 @@ export type TParsedForecast = {
 
 export interface IForecastListItemProps {
   time: string;
-  iconId: string;
-  temperature: number;
+  iconId: JSX.Element;
+  temperature: string;
   id: string;
   onHandleClick: (id: string) => void;
 };

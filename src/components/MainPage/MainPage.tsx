@@ -4,6 +4,7 @@ import ForecastDetails from "../ForecastDetails";
 import ForecastList from "../ForecastList";
 import { IAppState } from "../../types";
 import useForecast from "../../hooks/useForecast";
+import "./index.scss";
 
 const MainPage: FC<{
   state: IAppState,
@@ -21,14 +22,12 @@ const MainPage: FC<{
   },[]);
   
   return (
-    <main>
-      <section>
-        <ForecastDetails {...state.activePeriod} />
-        <ForecastList
-          forecasts={state.forecasts}
-          handleClick={switchPeriod}
-        />
-      </section>
+    <main className="main-page">
+      <ForecastDetails {...state.activePeriod} />
+      <ForecastList
+        forecasts={state.forecasts}
+        handleClick={switchPeriod}
+      />
     </main>
   );
 }

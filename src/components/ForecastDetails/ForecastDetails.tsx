@@ -1,6 +1,6 @@
 import { FC, ReactElement } from "react";
 import { TParsedForecast } from "../../types";
-
+import "./index.scss";
 
 const ForecastDetails: FC<TParsedForecast> = ({
   tempCurrent,
@@ -14,15 +14,22 @@ const ForecastDetails: FC<TParsedForecast> = ({
   month 
 }): ReactElement => (
   <div className="forecast-details">
-    <span>{tempCurrent}</span>
-    <span>{dayName}</span>
-    <span>{tempMin}</span>
-    <span>{tempMax}</span>
-    <span>{weather}</span>
-    <span>{icon}</span>
-    <span>{city}</span>
-    <span>{dayNumeric}</span>
-    <span>{month}</span>
+    <div className="forecast-details__icon">{icon}</div>
+    <div>
+      <div className="forecast-details__title-wrapper">
+        <span className="forecast-details__title">{weather}</span>
+        <span className="forecast-details__title">{`${tempMin} / ${tempMax}`}</span>
+      </div>
+      <span className="forecast-details__current">{tempCurrent}</span>
+    </div>
+    <div className="forecast-details__date">
+      <span className="forecast-details__title">{city}</span>
+      <span className="forecast-details__subtitle">{dayName}</span>
+      <div>
+        <span className="forecast-details__subtitle">{`${dayNumeric}.`}</span>
+        <span className="forecast-details__subtitle">{month}</span>
+      </div>
+    </div>
   </div>
 );
 

@@ -1,0 +1,44 @@
+@import '../../variables.scss';
+
+.forecast-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: column;
+
+  .forecast-details__icon {
+    display: grid;
+    justify-content: center;
+    svg {
+      width: 328px;
+    }
+  }
+
+  .forecast-details__title-wrapper {
+    display: flex;
+    .forecast-details__title {
+      @include typography-secondary;
+      flex-basis: 50%;
+    }
+  }
+  
+  .forecast-details__subtitle {
+    @include typography-primary;
+    font-size: $font-size-l;
+    margin-right: 24px;
+  }
+
+  .forecast-details__current {
+    @include typography-primary;
+    font-size: $font-size-xl;
+    padding-left: 24px;
+  }
+
+  .forecast-details__date {
+    display: flex;
+    flex-direction: column;
+    .forecast-details__title {
+      @include typography-secondary;
+      margin-bottom: 32px;
+    }
+  }
+}

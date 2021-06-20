@@ -1,11 +1,13 @@
 import { TForecast, IApiResponse, TParsedForecast } from "./types";
+import { getWeatherIcon } from "./icons";
 
 // Converts temperature in Kelvin to Celsius
-const kelvinToCelsius = (k: number): number => Math.floor(k - 273.15);
+const kelvinToCelsius = (k: number): string => Math.floor(k - 273.15) + `°`;
 
 // Parse date string to a separate date values
 const parseDate = (date: string, options: {[key:string]: string|boolean}): string => new Date(date).toLocaleString('en-us', options);
 
+// Parse response data. Returns an array of forecasts
 export const dataParser = (forecastData: IApiResponse): TParsedForecast[] => {
   const { city, list } = forecastData;
   const parsedForecast = list?.map((item: TForecast, index: number) => {
@@ -19,7 +21,7 @@ export const dataParser = (forecastData: IApiResponse): TParsedForecast[] => {
       tempMin: kelvinToCelsius(item.main.temp_min),
       tempMax: kelvinToCelsius(item.main.temp_max),
       weather: item.weather[0].main,
-      icon: item.weather[0].icon,
+      icon: getWeatherIcon(item.weather[0].icon),
       city: city.name,
     }
   });
@@ -27,6 +29,7 @@ export const dataParser = (forecastData: IApiResponse): TParsedForecast[] => {
   return parsedForecast;
 };
 
+// Returns an array with selected forecast for a specific time period
 export const getActivePeriod = (id: string, forecasts: TParsedForecast[]): TParsedForecast => {
   return forecasts.filter(forecast => forecast.id === id)[0];
 };
