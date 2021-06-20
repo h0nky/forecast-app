@@ -1,10 +1,3 @@
-export interface IAppState {
-  forecasts: TParsedForecast[];
-  loading: boolean;
-  error: boolean;
-  activePeriod: any;
-}
-
 type TCity = {
   coord: {
     lat: number;
@@ -13,14 +6,14 @@ type TCity = {
   country: string;
   id: number;
   name: string; // "Altstadt";
-}
+};
 
 type TWeather = {
   description: string;
   icon: string; // Weather icon id
   id: number; 
   main: string
-}
+};
 
 export type TForecast = {
   clouds: {
@@ -46,19 +39,7 @@ export type TForecast = {
     deg: number;
     speed: number;
   }
-}
-
-export interface IApiResponse {
-  city: TCity;
-  cnt: number;
-  cod: string;
-  list: TForecast[];
-  message: number;
-}
-
-export interface IApiService {
-  fetchData: () => void;
-}
+};
 
 export type TParsedForecast = {
   dayName: string,
@@ -74,10 +55,35 @@ export type TParsedForecast = {
   month: string;
 };
 
+export interface IApiResponse {
+  city: TCity;
+  cnt: number;
+  cod: string;
+  list: TForecast[];
+  message: number;
+};
+
+export interface IApiService {
+  fetchData: () => void;
+};
+
 export interface IForecastListItemProps {
   time: string;
   iconId: JSX.Element;
   temperature: string;
   id: string;
   onHandleClick: (id: string) => void;
+};
+
+export interface IAppState {
+  forecasts: TParsedForecast[];
+  loading: boolean;
+  error: boolean;
+  activePeriod: any;
+};
+
+export interface IContext {
+  state: IAppState;
+  updateState: (response: IApiResponse | null) => void;
+  switchPeriod: (id: string) => void;
 };

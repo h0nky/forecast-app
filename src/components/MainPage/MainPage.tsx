@@ -2,32 +2,36 @@
 import { ReactElement, FC, useEffect } from "react";
 import ForecastDetails from "../ForecastDetails";
 import ForecastList from "../ForecastList";
-import { IAppState } from "../../types";
+import Notification from "../Notification";
+import { IContext } from "../../types";
 import useForecast from "../../hooks/useForecast";
 import "./index.scss";
 
-const MainPage: FC<{
-  state: IAppState,
-  updateState: () => void,
-  switchPeriod: (id: string) => void
-}> = ({
+const MainPage: FC<IContext> = ({
   state,
   updateState,
   switchPeriod 
 }): ReactElement => {
   const fetchForecasts = useForecast(updateState);
+  const { error, loading, activePeriod, forecasts } = state;
 
   useEffect(() => {
     fetchForecasts();
   },[]);
-  
+
+  if (error) return <Notification text="Something went wrong. Check your internet connection and try again!" />
+
   return (
     <main className="main-page">
-      <ForecastDetails {...state.activePeriod} />
-      <ForecastList
-        forecasts={state.forecasts}
-        handleClick={switchPeriod}
-      />
+      {loading ? null :
+      (
+        <>
+          <ForecastDetails {...activePeriod} />
+          <ForecastList
+            forecasts={forecasts}
+            handleClick={switchPeriod}
+          />
+        </>)}
     </main>
   );
 }

@@ -3,7 +3,7 @@ import { IForecastListItemProps } from "../../types";
 import "./index.scss";
 
 const ForecastListItem: FC<IForecastListItemProps> = ({ time, iconId, temperature, id, onHandleClick }): ReactElement => {
-  const ref = useRef<any>(null); // TODO: fix any
+  const ref = useRef<any>(null); // TODO: replace any
   return (
     <li id={id} ref={ref} className="forecast-list-item" onClick={() => onHandleClick(ref.current.id)}>
       <span className="forecast-list-item__time">

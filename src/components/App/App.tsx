@@ -1,14 +1,14 @@
 import { FC, ReactElement } from "react";
-import MainPage from "./components/MainPage";
-import { Context, Provider } from "./store";
-import './App.scss';
+import MainPage from "../MainPage";
+import { Context, Provider } from "../../store";
+import { IContext } from "../../types";
+import './index.scss';
 
 const App: FC = (): ReactElement => (
   <Provider>
     <div className="app">
-      <header className="app-header" />
       <Context.Consumer>
-        {(context: any) => <MainPage {...context} />}
+        {(context: IContext) => <MainPage {...context} />}
       </Context.Consumer>
     </div>
   </Provider>

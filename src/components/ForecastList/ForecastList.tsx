@@ -3,7 +3,6 @@ import ForecastListItem from "../ForecastListItem";
 import { TParsedForecast } from "../../types";
 import "./index.scss";
 
-// TODO: replace Math.random with ID!
 const ForecastList: FC<{
   forecasts: TParsedForecast[],
   handleClick: (id: string) => void
