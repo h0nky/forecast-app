@@ -1,5 +1,8 @@
 .main-page {
   height: 100%;
-  display: grid;
-  align-items: center;
+  .main-content {
+    height: 100%;
+    display: grid;
+    align-items: center;
+  }
 }

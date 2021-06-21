@@ -10,9 +10,10 @@ import "./index.scss";
 const MainPage: FC<IContext> = ({
   state,
   updateState,
-  switchPeriod 
+  switchPeriod,
+  setError
 }): ReactElement => {
-  const fetchForecasts = useForecast(updateState);
+  const fetchForecasts = useForecast(updateState, setError);
   const { error, loading, activePeriod, forecasts } = state;
 
   useEffect(() => {
@@ -22,16 +23,22 @@ const MainPage: FC<IContext> = ({
   if (error) return <Notification text="Something went wrong. Check your internet connection and try again!" />
 
   return (
-    <main className="main-page">
+    <main
+      aria-label="main-page"
+      className="main-page"
+    >
       {loading ? null :
       (
-        <>
+        <div
+          aria-label="main-content"
+          className="main-content"
+        >
           <ForecastDetails {...activePeriod} />
           <ForecastList
             forecasts={forecasts}
             handleClick={switchPeriod}
           />
-        </>)}
+        </div>)}
     </main>
   );
 }

@@ -1,6 +1,9 @@
 @import '../../variables.scss';
 
 .error-message {
-  font-size: $font-size-xl;
+  font-size: $font-size-s;
   color: $white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }

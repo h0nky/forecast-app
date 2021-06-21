@@ -9,8 +9,9 @@ const Context = createContext<IContext>({
     loading: true,
     error: false
   },
-  updateState: (response: IApiResponse | null) => {},
-  switchPeriod: () => {}
+  updateState: () => {},
+  switchPeriod: () => {},
+  setError: () => {}
 });
 
 const initialState: IAppState = {
@@ -26,18 +27,17 @@ const Provider: FC<{ children: ReactElement }> = ({ children }): ReactElement =>
     <Context.Provider
       value={{
         state,
-        updateState: (response: IApiResponse | null) => {
-          if (response) {
-            const parsedData = dataParser(response);
-            setState({ ...state, forecasts: parsedData, activePeriod: parsedData[0], loading: false });
-          } else {
-            setState({ ...state, error: true });
-          }
+        updateState: (response: IApiResponse) => {
+          const parsedData = dataParser(response);
+          setState({ ...state, forecasts: parsedData, activePeriod: parsedData[0], loading: false });
         },
         switchPeriod: (id: string) => {
           const activePeriod = getActivePeriod(id, state.forecasts);
           setState({ ...state, activePeriod })
         },
+        setError: () => {
+          setState({ ...state, error: true });
+        }
       }}
     >
       {children}

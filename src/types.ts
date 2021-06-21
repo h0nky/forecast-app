@@ -84,6 +84,7 @@ export interface IAppState {
 
 export interface IContext {
   state: IAppState;
-  updateState: (response: IApiResponse | null) => void;
+  updateState: (response: IApiResponse) => void;
   switchPeriod: (id: string) => void;
+  setError: () => void;
 };
